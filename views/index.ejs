@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
+    <link href="/stylesheets/form.css" rel="stylesheet" type="text/css">
+    <script src="/scripts/form.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+</head>
+
+<body class="bg-info">
+    <!-- <div class="container mt-4 pt-4">
+            <div class="card">
+                <div class="card-body mt-4">
+                    <h1 class="text-warning text-center mb-4">
+                        Subscriber<span class="text-success text-sm">App</span>
+                      </h1>
+                          
+                            <form action="/" method="POST">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="firstName">Name</label>
+                                        <input type="text" class="form-control " placeholder="Enter subscriber`s name" name="name">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="firstName">Number</label>
+                                        <input type="number" class="form-control " placeholder="Enter subscriber's number " name="number" >
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="firstName">ID NO</label>
+                                        <input type="number" class="form-control " placeholder="Enter subscriber`s ID number" name="ID">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="firstName">`</label>
+                                      <input
+                                        type="submit"
+                                        class="btn btn-success form-control btn-form"
+                                        value="Submit"
+                                      />
+                                    
+                                    </div>
+                                  </div>
+                            </form>  
+                        </div> 
+                    </div>  
+                    <div class="card-footer bg-warning">
+                                <p class="text-center"><a href="/subscriber/list" >Click to see Subcribers table</a></p>
+                    </div>
+                </div>
+                
+                
+            </div> -->
+    <!-- MultiStep Form -->
+    <div class="container-fluid" id="grad1">
+        <div class="row justify-content-center mt-0">
+            <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                    <h2><strong>Change ownership form</strong></h2>
+                    <p>Fill all form field to go to next step</p>
+                    <div class="row">
+                        <div class="col-md-12 mx-0">
+                            <form id="msform">
+                                <!-- progressbar -->
+                                <ul id="progressbar">
+                                    <li class="active step" id="currentOwner"><strong>Current Owner</strong></li>
+                                    <li id="newOwner" class="step"><strong>New Owner</strong></li>
+                                    <li id="changeInfo" class="step"><strong>Change Information</strong></li>
+                                    <li id="declaration" class="step"><strong>Customer Declaration</strong></li>
+                                    <li id="confirm" class="step"><strong>Finish</strong></li>
+                                </ul>
+                                <!-- fieldsets -->
+                                <fieldset class="tab">
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Current registered owner of line</h2>
+                                        <input type="text" name="firstName" placeholder="First Name" id="oldOwnerFName"
+                                            required />
+                                        <input type="text" name="lastName" placeholder=" Last Name" id="oldOwnerLName"
+                                            required />
+                                        <input type="number" name="idNo"
+                                            placeholder="National ID/ Valid passport/ Alien ID/ Military No"
+                                            id="oldOwnerId" required />
+                                        <input type="tel" name="phoneNo" placeholder="Mobile Number"
+                                            id="oldOwnerPhoneNo" required />
+                                        <input type="tel" name="changePhoneNo" placeholder="Mobile Number to be Changed"
+                                            id="phoneNoChange" required />
+                                    </div>
+                                    <input type="button" name="next" onclick="getInputValue();"
+                                        class="next action-button" value="Next Step" />
+                                </fieldset>
+                                <fieldset class="tab">
+                                    <div class="form-card">
+                                        <h2 class="fs-title">New owner of line</h2>
+                                        <input type="text" name="firstName" placeholder="First Name" id="newOwnerFName"
+                                            required />
+                                        <input type="text" name="lastName" placeholder=" Last Name" id="newOwnerLName"
+                                            required />
+                                        <input type="number" name="idNo"
+                                            placeholder="National ID/ Valid passport/ Alien ID/ Military No"
+                                            id="newOwnerId" required />
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                        value="Previous" />
+                                    <input type="button" name="next" onclick="getInputValue();"
+                                        class="next action-button" value="Next Step" />
+                                </fieldset>
+                                <fieldset class="tab">
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Change Information</h2>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="mpesaOwnership" disabled
+                                                id="flexCheckDefault" name="changeInfo">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                M-PESA ownership
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="mobileNoOwnership"
+                                                id="flexCheckChecked" name="changeInfo">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Mobile No. ownership
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                        value="Previous" />
+                                    <input type="button" name="next" onclick="getInputValue();"
+                                        class="next action-button" value="Next Step" />
+                                </fieldset>
+                                <fieldset class="tab">
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Customer Declaration</h2>
+                                        <p>I <strong id="CONames"></strong> of National ID/ Valid passport/ Alien ID/
+                                            Military No <strong id="COId"></strong>
+                                            hereby authorize Safaricom to change <strong id="changeDetails"></strong> of
+                                            <strong id="changeNumber"></strong> to <strong id="NONames"></strong> of
+                                            National ID/ Valid passport/ Alien ID/
+                                            Military No <strong id="NOId"></strong>
+                                        </p>
+                                        <label class="form-label" for="customFile">Attach copies of both id</label>
+                                        <input type="file" id="files" name="files" multiple>
+
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                        value="Previous" />
+                                    <input type="button" name="next" class="next action-button" value="Next Step" />
+                                </fieldset>
+
+                                <fieldset class="tab">
+                                    <div class="form-card">
+                                        <h2 class="fs-title text-center">Success !</h2>
+                                        <br><br>
+                                        <div class="row justify-content-center">
+                                            <div class="col-3">
+                                                <img src="https://img.icons8.com/color/96/000000/ok--v2.png"
+                                                    class="fit-image">
+                                            </div>
+                                        </div>
+                                        <br><br>
+                                        <div class="row justify-content-center">
+                                            <div class="col-7 text-center">
+                                                <h5>Your request has been submitted</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalInfo" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

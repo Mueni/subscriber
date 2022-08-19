@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    </head>
+    <body class="bg-info" >
+        
+        <div class="container mt-4">
+            <div class="card">
+<div class="card-body">
+    <table class="table table-bordered table-hover mt-4">
+        <caption>List of subscribers</caption>
+        <thead class="bg-warning text-white">
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Phone No</th>
+                <th>ID No</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%
+            if(subscriberData.length!=0){
+            var i=1;
+            subscriberData.forEach(function(data){
+            %>  <tr>
+                <td><%=i; %></td>
+                <td><%=data.name %></td>
+                <td><%=data.number %></td>
+                <td><%=data.ID %></td>
+                <td>
+                    <a href="/subscriber/edit/<%=data.id%>" class="btn btn-info">Edit</a>
+                <a href="/subscriber/delete/<%=data.id%>" class="btn btn-danger">Delete</a>
+            </tr>
+            <%  i++; }) %>
+            <% } else{ %>
+                <tr>
+                    <td colspan="7" class="text-center">No Data Found</td>
+                </tr>
+            <% } %>
+        </tbody>
+        <tfoot >
+            <p class="text-center"><a href="/">Click Back to Main form</a></p>
+        </tfoot>
+    </table>
+</div>
+            </div>
+        </div>
+
+        
+        <script src="" async defer></script>
+    </body>
+</html>
